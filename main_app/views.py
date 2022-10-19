@@ -21,6 +21,12 @@ def package_index(request):
     packages = Package.objects.all()
     return render(request, 'packages/index.html', {'packages': packages})
 
+def package_detail(request, package_id):
+    package = Package.objects.get(id=package_id)
+    return render(request, 'packages/detail.html', {
+        'package': package
+        })
+
 def signup(request):
     error_message = None
     if request.method == 'POST':
@@ -34,3 +40,14 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+class PackageCreate(CreateView):
+    model = Package
+    fields = '__all__'
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class PackageUpdate(UpdateView):
+    model = Package
+    fields = '__all__'

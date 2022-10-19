@@ -25,13 +25,19 @@
           <ul>
             <li>
                 <div class="header-logo">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'packages_index' %}" class="header-logo__img">
+                        <img class="header-logo__img" src="{% static 'imgs/logo.png' %}" alt="Embasssy Package Tracker">
+                    </a>
+                    {% else %}
                     <a href="{% url 'home' %}" class="header-logo__img">
                         <img class="header-logo__img" src="{% static 'imgs/logo.png' %}" alt="Embasssy Package Tracker">
                     </a>
+                    {% endif %}
                     <span>&nbsp;</span>
                     <span class="header-logo__bar"></span>               
                     <span class="header-logo__text">
-                        Embassy Package Tracker
+                        EmbassyOS Package Tracker
                     </span>
                 </div>
             </li>
