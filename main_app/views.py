@@ -45,14 +45,14 @@ def signup(request):
 
 class PackageCreate(LoginRequiredMixin, CreateView):
     model = Package
-    fields = ('name', 'description', 'type')
+    fields = ('name', 'description', 'type', 'origin', 'wrapper')
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 class PackageUpdate(LoginRequiredMixin, UpdateView):
     model = Package
-    fields = ('description', 'type')
+    fields = ('description', 'type', 'origin', 'wrapper')
 
 class PackageDelete(LoginRequiredMixin, DeleteView):
     model = Package

@@ -13,6 +13,7 @@ Add a New Package | EmbassyOS
     <h1>Edit {{ object.name }}'s Details</h1>
     {% else %}
     <h1>Add a New Package</h1>
+    <p>Please ensure you have the information to fill out this form like github links and final name <span class="home-card-red">BEFORE</span> submitting</p>
     {% endif %}
     <form action="" method="POST">
         {% csrf_token %}
