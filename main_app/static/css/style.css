@@ -59,7 +59,7 @@ a:hover {
 
 nav {
     height: 75px;
-    background-color: #333333;
+    background-color: #333333 !important;
 }
 
 .nav-wrapper > ul >li > div > a > img {
