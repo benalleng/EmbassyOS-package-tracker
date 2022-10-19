@@ -1,27 +1,28 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% block title%}
     EmbassyOS Package Tracker | Home
 {% endblock %}
 {% block content %}
 <div class="card">
-    <a href="{% url 'packages_index' %}">
-        <h1>Package Tracker</h1>
+    <a class="black-text" href="{% url 'packages_index' %}">
+        <h1 class="home-card-red">Package Tracker</h1>
         <p>Index of current packages under development</p>
-        <p>Index </p>
+        <p class="blue-text">Index</p>
     </a>
 </div>
 <div class="card">
-    <a href="https://github.com/Start9Labs/service-pipeline" target="_blank">
-        <h1>Service Packaging Guide</h1>
+    <a class="black-text" href="https://github.com/Start9Labs/service-pipeline" target="_blank">
+        <h1 class="home-card-red">Service Packaging Guide</h1>
         <p>A Repo for the coordination and improvement of service packaging on Embassy</p>
-        <p>Start9 servicce-pipeline </p>
+        <p class="blue-text">Start9 service-pipeline <img src="{% static 'imgs/exit-top-right.png' %}" alt="external-link" height="14"></p>
     </a>
 </div>
 <div class="card">
-    <a href="{% url 'about' %}">
-        <h1>About</h1>
+    <a class="black-text" href="{% url 'about' %}">
+        <h1 class="home-card-red">About</h1>
         <p>About the Embassy Package Tracker and its purpose</p>
-        <p>About </p>
+        <p class="blue-text">About</p>
     </a>
 </div>
 {% endblock %}

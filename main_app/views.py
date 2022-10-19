@@ -17,10 +17,12 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def package_index(request):
     packages = Package.objects.all()
     return render(request, 'packages/index.html', {'packages': packages})
 
+@login_required
 def package_detail(request, package_id):
     package = Package.objects.get(id=package_id)
     return render(request, 'packages/detail.html', {
@@ -41,17 +43,17 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-class PackageCreate(CreateView):
+class PackageCreate(LoginRequiredMixin, CreateView):
     model = Package
     fields = ('name', 'description', 'type')
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class PackageUpdate(UpdateView):
+class PackageUpdate(LoginRequiredMixin, UpdateView):
     model = Package
     fields = ('description', 'type')
 
-class PackageDelete(DeleteView):
+class PackageDelete(LoginRequiredMixin, DeleteView):
     model = Package
     success_url = '/packages/'

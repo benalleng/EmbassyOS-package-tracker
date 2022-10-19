@@ -20,6 +20,13 @@ main {
 .right {
     margin-right: 10px !important;
     padding-top: 10px !important;
+    margin-left: 0 !important;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.home-card-red {
+    color: #ee6570;
 }
 
 .card {
