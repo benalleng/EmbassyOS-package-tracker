@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -8,4 +9,4 @@ from django.contrib.auth.models import User
 class Package(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Package
 
 # Create your views here.
 
@@ -15,6 +16,10 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def package_index(request):
+    packages = Package.objects.all()
+    return render(request, 'packages/index.html', {'packages': packages})
 
 def signup(request):
     error_message = None
