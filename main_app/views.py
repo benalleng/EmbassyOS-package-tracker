@@ -43,14 +43,14 @@ def signup(request):
 
 class PackageCreate(CreateView):
     model = Package
-    fields = ('name', 'description')
+    fields = ('name', 'description', 'type')
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 class PackageUpdate(UpdateView):
     model = Package
-    fields = '__all__'
+    fields = ('description', 'type')
 
 class PackageDelete(DeleteView):
     model = Package

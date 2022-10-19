@@ -8,12 +8,12 @@ Add a New Package | EmbassyOS
 
 {% block content %}
 
-{% if object %}
-<h1>Edit {{ object.name }}'s Details</h1>
-{% else %}
-<h1>Add a New Package</h1>
-{% endif %}
 <div class="card">
+    {% if object %}
+    <h1>Edit {{ object.name }}'s Details</h1>
+    {% else %}
+    <h1>Add a New Package</h1>
+    {% endif %}
     <form action="" method="POST">
         {% csrf_token %}
         <table>
