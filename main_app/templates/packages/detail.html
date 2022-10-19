@@ -20,6 +20,12 @@ Details for {{ package.name }} | EmbassyOS Package Tracker
                     {{ package.name}}
                 </span>
                 <p>Description: {{ package.description }}</p>
+                <br>
+                <p>Started By: {{ package.user }}</p>
+            </div>
+            <div class="card-action">
+                <a class="btn" href="{% url 'packages_update' package.id %}">Update</a>
+                <a class="btn red" href="{% url 'packages_delete' package.id %}">Delete</a>
             </div>
         </div>
     </div>
