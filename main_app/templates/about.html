@@ -1,10 +1,19 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% block title%}
-Embassy Package Tracker | About
+EmbassyOS Package Tracker | About
 {% endblock %}
 {% block content %}
 <div class="card">
     <h1>About</h1>
-    <p>About the cat collector.</p>
+    <p>The <a href="https://start9.com/latest/">EmbassyOS</a> Package Tracker is an app designed to help organize and manage apps to be packaged for use in the EmbassyOS homeserver</p>
+    <br>
+    <p>These packages .s9pk are built largely by the community and as a result what you put into your EmbassyOS is what you put it so you better make sure everything is running smoothly</p>
+    <br>    
+    <p>Understanding that not everyone can be a super-coder out of the box the team at EmbassyOS has made some excellent tutorials and helpful steps to take to getting your first package built for the EmbassyOS</p>
+    <br>
+    <p>Here is a great resource to get started!
+        <a href="https://github.com/Start9Labs/hello-world-wrapper">Start9Labs/hello-wold-wrapper <img src="{% static 'imgs/exit-top-right.png' %}" alt="external-link" height="14"></a>
+    </p>
 </div>
 {% endblock %}

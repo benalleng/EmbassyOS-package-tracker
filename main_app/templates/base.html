@@ -13,8 +13,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <link rel="icon" href="./static/imgs/favicon.png" sizes="192x192">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'imgs/favicon.png' %}" sizes="192x192">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
@@ -22,21 +22,45 @@
     <header class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <ul class="">
+          <ul>
             <li>
                 <div class="header-logo">
-                    <a href="{% url 'home' %}" class="header-logo__img">
-                        <img class="header-logo__img" src="../static/imgs/logo.png" alt="Embasssy Package Tracker">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'packages_index' %}" class="header-logo__img">
+                        <img class="header-logo__img" src="{% static 'imgs/logo.png' %}" alt="Embasssy Package Tracker">
                     </a>
+                    {% else %}
+                    <a href="{% url 'home' %}" class="header-logo__img">
+                        <img class="header-logo__img" src="{% static 'imgs/logo.png' %}" alt="Embasssy Package Tracker">
+                    </a>
+                    {% endif %}
                     <span>&nbsp;</span>
                     <span class="header-logo__bar"></span>               
                     <span class="header-logo__text">
-                        Embassy Package Tracker
+                        EmbassyOS Package Tracker
                     </span>
                 </div>
             </li>
           </ul>
-          <ul class="right">
+          <a class="dropdown-trigger right" href="#" data-target="dropdown1"><img src="{% static 'imgs/menu.png' %}" alt="#" height="28"></a>
+          <ul id="dropdown1" class="dropdown-content">
+            {% if user.is_authenticated %}
+            <li>
+                <a class="black-text" href="{% url 'logout' %}">Logout</a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a class="black-text" href="{% url 'home' %}">Home</a>
+            </li>
+            {% else %}
+            <li>
+                <a class="black-text" href="{% url 'signup' %}">Signup</a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+                <a class="black-text" href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
@@ -46,9 +70,20 @@
         {% endblock %}
     </main>
     <footer class="page-footer">
-      <div class="right">
+      <div class="left">
         Created by Ben A
       </div>
     </footer>
   </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(dropdown, {
+        alignment: 'right',
+        closeONClick: true,
+        coverTrigger: false
+        });
+    });
+</script>

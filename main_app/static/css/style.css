@@ -18,7 +18,22 @@ main {
 }
 
 .right {
-    margin-right: 10 !important;
+    margin-right: 10px !important;
+    margin-top: 20px !important;
+    margin-left: 0 !important;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.left {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 10 !important;
+    margin-bottom: 10 !important;
+}
+
+.home-card-red {
+    color: #ee6570;
 }
 
 .card {
@@ -59,7 +74,7 @@ a:hover {
 
 nav {
     height: 75px;
-    background-color: #333333;
+    background-color: #333333 !important;
 }
 
 .nav-wrapper > ul >li > div > a > img {

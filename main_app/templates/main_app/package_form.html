@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+Add a New Package | EmbassyOS
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    {% if object %}
+    <h1>Edit {{ object.name }}'s Details</h1>
+    {% else %}
+    <h1>Add a New Package</h1>
+    <p>Please ensure you have the information to fill out this form like github links and final name <span class="home-card-red">BEFORE</span> submitting</p>
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="{% if object %} Update {% else %} Add New {% endif %}" class="btn green" />
+    </form>
+    <span>&nbsp;</span>
+</div>
+
+{% endblock %}

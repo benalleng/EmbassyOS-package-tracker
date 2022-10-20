@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Please Login | EmbassyOS
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h1>Log In</h1>
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        <input class="btn" type="submit" value="login">
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+    <span>&nbsp;</span>
+</div>
+
+{% endblock %}

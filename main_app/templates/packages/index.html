@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title%}
+    EmbassyOS Package Tracker |
+{% endblock %}
+{% block content %}    
+<h1 class="white-text">Packages Index</h1>
+<h5>
+    <a class="btn" href="{% url 'packages_create' %}">Create New Package</a>
+</h5>
+<br>
+{% for package in packages %}
+<a href="{% url 'packages_detail' package.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title home-card-red">
+            {{ package.name}}
+            </span>
+            <p>Description: {{ package.description }}</p>
+        </div>
+    </div>
+</a>
+
+{% endfor %}{% endblock %}

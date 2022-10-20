@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+
+Details for {{ package.name }} | EmbassyOS Package Tracker
+
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="white-text">Package Details</h1>
+
+
+<div class="row">
+    {% if user == package.user %}
+    <div class="card-action">
+        <a class="btn" href="{% url 'packages_update' package.id %}">Update</a>
+        <a class="btn red" href="{% url 'packages_delete' package.id %}">Delete</a>
+    </div>
+    {% endif %}
+    <br>
+    <div class="col s6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title home-card-red">
+                    {{ package.name}}
+                </span>
+                <p><i>Category:</i> {{ package.type }}</p>
+                <br>
+                <p><i>Description:</i> {{ package.description }}</p>
+                <br>
+                <p><i>Started By:</i> {{ package.user }}</p>
+                <p>
+                    <a class="blue-text" href="{{ package.origin }}" target="_blank">
+                        <img src="{% static 'imgs/github-sign.png' %}" alt="Project Github" height="15">
+                        github/{{ package.name.lower }}
+                        <img src="{% static 'imgs/exit-top-right.png' %}" alt="external-link" height="14">
+                    </a>
+                </p>
+                <p>
+                    <a class="blue-text" href="{{ package.wrapper }}" target="_blank">
+                        <img src="{% static 'imgs/github-sign.png' %}" alt="Project Github" height="15">
+                        Start9Labs/{{ package.name.lower }}-wrapper
+                        <img src="{% static 'imgs/exit-top-right.png' %}" alt="external-link" height="14">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="card">
+
+            <form action="{% url 'add_workflow' package.id %}" method="POST">
+                {% csrf_token %}
+                {{ workflow_form.as_p }}
+                <input class="btn" type="submit" value="Add Task">
+            </form>
+            <table class="striped">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for workflow in package.workflow_set.all %}
+                <tr>
+                    <td>{{ workflow.date }}</td>
+                    <td>{{ workflow.get_type_display }}</td>
+                    <td>{{ workflow.comment}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    const dateField = document.getElementById('id_date');
+    const typeSelect = document.getElementById('id_type');
+
+    M.Datepicker.init(dateField, {
+        format: 'mmm dd, yyyy',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    });
+
+    M.FormSelect.init(typeSelect);
+</script>
+
+{% endblock %}
