@@ -1,4 +1,4 @@
-# EmbassyOS Package Trakcer
+# EmbassyOS Package Tracker
 
 Welcome to te EmbassyOS Package Tracker README
 
