@@ -42,20 +42,23 @@
                 </div>
             </li>
           </ul>
-          <ul class="right">
+          <a class="dropdown-trigger right" href="#" data-target="dropdown1"><img src="{% static 'imgs/menu.png' %}" alt="#" height="28"></a>
+          <ul id="dropdown1" class="dropdown-content">
             {% if user.is_authenticated %}
             <li>
-                <a href="{% url 'logout' %}">Logout</a>
+                <a class="black-text" href="{% url 'logout' %}">Logout</a>
             </li>
+            <li class="divider" tabindex="-1"></li>
             <li>
-                <a href="{% url 'home' %}">Home</a>
+                <a class="black-text" href="{% url 'home' %}">Home</a>
             </li>
             {% else %}
             <li>
-                <a href="{% url 'signup' %}">Signup</a>
+                <a class="black-text" href="{% url 'signup' %}">Signup</a>
             </li>
+            <li class="divider" tabindex="-1"></li>
             <li>
-                <a href="{% url 'login' %}">Login</a>
+                <a class="black-text" href="{% url 'login' %}">Login</a>
             </li>
             {% endif %}
           </ul>
@@ -67,9 +70,20 @@
         {% endblock %}
     </main>
     <footer class="page-footer">
-      <div class="right">
+      <div class="left">
         Created by Ben A
       </div>
     </footer>
   </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(dropdown, {
+        alignment: 'right',
+        closeONClick: true,
+        coverTrigger: false
+        });
+    });
+</script>
