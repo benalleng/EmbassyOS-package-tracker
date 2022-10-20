@@ -49,10 +49,10 @@ Details for {{ package.name }} | EmbassyOS Package Tracker
         </div>
     </div>
     <div class="col s6">
-        <form action="{% url 'add_feeding' cat.id %}" method="POST">
+        <form action="{% url 'add_workflow' cat.id %}" method="POST">
             {% csrf_token %}
-            {{ feeding_form.as_p }}
-            <input class="btn blue" type="submit" value="Add Feeding">
+            {{ workflow_form.as_p }}
+            <input class="btn blue" type="submit" value="Add Task">
         </form>
         <table class="striped">
             <thead>
