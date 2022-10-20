@@ -49,13 +49,15 @@ Details for {{ package.name }} | EmbassyOS Package Tracker
         </div>
     </div>
     <div class="col s6">
-        <form action="{% url 'add_workflow' package.id %}" method="POST">
-            {% csrf_token %}
-            {{ workflow_form.as_p }}
-            <input class="btn blue" type="submit" value="Add Task">
-        </form>
-        <table class="striped">
-            <thead>
+        <div class="card">
+
+            <form action="{% url 'add_workflow' package.id %}" method="POST">
+                {% csrf_token %}
+                {{ workflow_form.as_p }}
+                <input class="btn blue" type="submit" value="Add Task">
+            </form>
+            <table class="striped">
+                <thead>
                 <tr>
                     <th>Date</th>
                     <th>Type</th>
@@ -70,7 +72,8 @@ Details for {{ package.name }} | EmbassyOS Package Tracker
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
+            </table>
+        </div>
     </div>
 </div>
 
