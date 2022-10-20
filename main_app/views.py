@@ -26,8 +26,10 @@ def package_index(request):
 @login_required
 def package_detail(request, package_id):
     package = Package.objects.get(id=package_id)
+    workflow_form = WorkflowForm()
     return render(request, 'packages/detail.html', {
-        'package': package
+        'package': package,
+        'workflow_form': workflow_form,
         })
 
 @login_required
