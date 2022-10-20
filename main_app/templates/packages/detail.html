@@ -32,14 +32,14 @@ Details for {{ package.name }} | EmbassyOS Package Tracker
                 <br>
                 <p><i>Started By:</i> {{ package.user }}</p>
                 <p>
-                    <a class="blue-text" href="">
+                    <a class="blue-text" href="{{ package.origin }}">
                         <img src="{% static 'imgs/github-sign.png' %}" alt="Project Github" height="15">
                         github/{{ package.name.lower }}
                         <img src="{% static 'imgs/exit-top-right.png' %}" alt="external-link" height="14">
                     </a>
                 </p>
                 <p>
-                    <a class="blue-text" href="">
+                    <a class="blue-text" href="{{ package.wrapper }}">
                         <img src="{% static 'imgs/github-sign.png' %}" alt="Project Github" height="15">
                         Start9Labs/{{ package.name.lower }}-wrapper
                         <img src="{% static 'imgs/exit-top-right.png' %}" alt="external-link" height="14">
