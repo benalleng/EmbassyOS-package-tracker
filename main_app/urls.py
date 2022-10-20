@@ -9,5 +9,6 @@ urlpatterns = [
     path('packages/create/', views.PackageCreate.as_view(), name='packages_create'),
     path('packages/<int:pk>/update/', views.PackageUpdate.as_view(), name='packages_update'),
     path('packages/<int:pk>/delete/', views.PackageDelete.as_view(), name='packages_delete'),
+    path('packages/<int:package_id>/add_workflow/', views.add_workflow, name='add_workflow'),
     path('accounts/signup/', views.signup, name='signup'),
 ]

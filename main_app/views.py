@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Package
+from .forms import WorkflowForm
 
 # Create your views here.
 
@@ -28,6 +29,18 @@ def package_detail(request, package_id):
     return render(request, 'packages/detail.html', {
         'package': package
         })
+
+@login_required
+def add_workflow(request, package_id):
+    print(request.POST)
+    form = WorkflowForm(request.POST)
+    if form.is_valid():
+        new_workflow = form.save(commit=False)
+        new_workflow.package_id = package_id
+        new_workflow.save()
+    else:
+        print(form.errors)
+    return redirect('packages_detail', package_id=package_id)
 
 def signup(request):
     error_message = None
