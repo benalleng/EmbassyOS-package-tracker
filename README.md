@@ -21,7 +21,7 @@ ____________
 ### Auth Page
 ![Login](main_app/static/imgs/Screenshot_2022-10-20_08-31-42.png)
 
-### Index Page
+### Detail Page
 ![Final](main_app/static/imgs/Screenshot_2022-10-20_08-31-17.png)
 
 ## Geting started
