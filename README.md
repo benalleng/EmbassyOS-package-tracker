@@ -26,7 +26,7 @@ ____________
 
 ## Geting started
 
- - Take a look around the index page after entering the website from the welcome screen. Then signup or login to add, edit, update, and delete items from the Package index and add tasks to each one to trackthe progress!
+ - Take a look around the index page after entering the website from the home page. Then signup or login to add, edit, update, and delete items from the Package index and add tasks to each one to trackthe progress!
 
  - [Heroku](https://package-tracker-ga.herokuapp.com/)
 
