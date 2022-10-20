@@ -74,4 +74,19 @@ Details for {{ package.name }} | EmbassyOS Package Tracker
     </div>
 </div>
 
+<script>
+    const dateField = document.getElementById('id_date');
+    const typeSelect = document.getElementById('id_type');
+    const commentField = document,getElementByID('id_comment');
+
+    M.Datepicker.init(dateField, {
+        format: 'mmm dd, yyyy',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    });
+
+    M.FormSelect.init(typeSelect);
+</script>
+
 {% endblock %}
