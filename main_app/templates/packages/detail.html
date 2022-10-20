@@ -48,6 +48,30 @@ Details for {{ package.name }} | EmbassyOS Package Tracker
             </div>
         </div>
     </div>
+    <div class="col s6">
+        <form action="{% url 'add_feeding' cat.id %}" method="POST">
+            {% csrf_token %}
+            {{ feeding_form.as_p }}
+            <input class="btn blue" type="submit" value="Add Feeding">
+        </form>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for workflow in package.workflow_set.all %}
+                <tr>
+                    <td>{{ workflow.date }}</td>
+                    <td>{{ workflow.get_type_display }}</td>
+                    <td>{{ workflow.comment}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {% endblock %}
